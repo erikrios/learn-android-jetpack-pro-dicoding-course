@@ -7,6 +7,10 @@ import com.erikriosetiawan.academy.databinding.ContentDetailCourseBinding
 
 class DetailCourseActivity : AppCompatActivity() {
 
+    companion object {
+        const val EXTRA_COURSE = "extra_course"
+    }
+
     private lateinit var detailContentBinding: ContentDetailCourseBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
