@@ -1,7 +1,8 @@
-package com.erikriosetiawan.academy
+package com.erikriosetiawan.academy.ui.detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.erikriosetiawan.academy.R
 
 class DetailCourseActivity : AppCompatActivity() {
 
