@@ -15,6 +15,7 @@ import com.erikriosetiawan.academy.databinding.ActivityDetailCourseBinding
 import com.erikriosetiawan.academy.databinding.ContentDetailCourseBinding
 import com.erikriosetiawan.academy.ui.reader.CourseReaderActivity
 import com.erikriosetiawan.academy.utils.DataDummy
+import com.erikriosetiawan.academy.viewmodel.ViewModelFactory
 
 class DetailCourseActivity : AppCompatActivity() {
 
@@ -37,9 +38,10 @@ class DetailCourseActivity : AppCompatActivity() {
 
         val adapter = DetailCourseAdapter()
 
+        val factory = ViewModelFactory.getInstance(this)
         val viewModel = ViewModelProvider(
             this,
-            ViewModelProvider.NewInstanceFactory()
+            factory
         )[DetailCourseViewModel::class.java]
 
         val extras = intent.extras
