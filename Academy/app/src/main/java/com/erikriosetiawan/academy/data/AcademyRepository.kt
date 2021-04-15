@@ -1,8 +1,6 @@
-package com.erikriosetiawan.academy.data.source
+package com.erikriosetiawan.academy.data
 
-import com.erikriosetiawan.academy.data.ContentEntity
-import com.erikriosetiawan.academy.data.CourseEntity
-import com.erikriosetiawan.academy.data.ModuleEntity
+import com.erikriosetiawan.academy.data.source.AcademyDataSource
 import com.erikriosetiawan.academy.data.source.remote.RemoteDataSource
 
 class AcademyRepository private constructor(private val remoteDataSource: RemoteDataSource) :

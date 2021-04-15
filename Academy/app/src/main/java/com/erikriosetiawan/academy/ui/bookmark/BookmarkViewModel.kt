@@ -2,8 +2,7 @@ package com.erikriosetiawan.academy.ui.bookmark
 
 import androidx.lifecycle.ViewModel
 import com.erikriosetiawan.academy.data.CourseEntity
-import com.erikriosetiawan.academy.data.source.AcademyRepository
-import com.erikriosetiawan.academy.utils.DataDummy
+import com.erikriosetiawan.academy.data.AcademyRepository
 
 class BookmarkViewModel(private val academyRepository: AcademyRepository) : ViewModel() {
 

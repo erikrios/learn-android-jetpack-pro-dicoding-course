@@ -1,7 +1,7 @@
 package com.erikriosetiawan.academy.di
 
 import android.content.Context
-import com.erikriosetiawan.academy.data.source.AcademyRepository
+import com.erikriosetiawan.academy.data.AcademyRepository
 import com.erikriosetiawan.academy.data.source.remote.RemoteDataSource
 import com.erikriosetiawan.academy.utils.JsonHelper
 

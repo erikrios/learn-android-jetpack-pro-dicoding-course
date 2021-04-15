@@ -1,7 +1,7 @@
 package com.erikriosetiawan.academy.ui.academy
 
 import com.erikriosetiawan.academy.data.CourseEntity
-import com.erikriosetiawan.academy.data.source.AcademyRepository
+import com.erikriosetiawan.academy.data.AcademyRepository
 import com.erikriosetiawan.academy.utils.DataDummy
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
