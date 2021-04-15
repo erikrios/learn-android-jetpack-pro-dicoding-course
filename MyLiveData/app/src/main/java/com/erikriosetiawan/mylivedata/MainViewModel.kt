@@ -19,7 +19,7 @@ class MainViewModel : ViewModel() {
         val timer = Timer()
         timer.scheduleAtFixedRate(object : TimerTask() {
             override fun run() {
-                val newValue = (SystemClock.elapsedRealtime() - mInitializeTime)
+                val newValue = (SystemClock.elapsedRealtime() - mInitializeTime) / 1000
                 mElapsedTime.postValue(newValue)
             }
         }, ONE_SECOND.toLong(), ONE_SECOND.toLong())
