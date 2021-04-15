@@ -3,6 +3,7 @@ package com.erikriosetiawan.academy.ui.detail
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -36,14 +37,20 @@ class DetailCourseActivity : AppCompatActivity() {
 
         val adapter = DetailCourseAdapter()
 
+        val viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        )[DetailCourseViewModel::class.java]
+
         val extras = intent.extras
         extras?.let {
             val courseId = extras.getString(EXTRA_COURSE)
             courseId?.let {
-                val modules = DataDummy.generateDummyModules(courseId)
+                viewModel.setSelectedCourse(courseId)
+                val modules = viewModel.getModules()
                 adapter.setModules(modules)
                 for (course in DataDummy.generateDummyCourses()) {
-                    populateCourse(course)
+                    populateCourse(viewModel.getCourse())
                 }
             }
         }
