@@ -2,7 +2,9 @@ package com.erikriosetiawan.academy.utils
 
 import com.erikriosetiawan.academy.data.CourseEntity
 import com.erikriosetiawan.academy.data.ModuleEntity
+import com.erikriosetiawan.academy.data.source.remote.response.ContentResponse
 import com.erikriosetiawan.academy.data.source.remote.response.CourseResponse
+import com.erikriosetiawan.academy.data.source.remote.response.ModuleResponse
 
 object DataDummy {
 
@@ -181,5 +183,70 @@ object DataDummy {
         )
 
         return courses
+    }
+
+    fun generateRemoteDummyModules(courseId: String): List<ModuleResponse> {
+        val modules = ArrayList<ModuleResponse>()
+        modules.add(
+            ModuleResponse(
+                "{$courseId}m1",
+                courseId,
+                "Modul 0 : Introduction",
+                0
+            )
+        )
+        modules.add(
+            ModuleResponse(
+                "{$courseId}m2",
+                courseId,
+                "Modul 1 : Teori 1",
+                1
+            )
+        )
+        modules.add(
+            ModuleResponse(
+                "{$courseId}m3",
+                courseId,
+                "Latihan 1",
+                2
+            )
+        )
+        modules.add(
+            ModuleResponse(
+                "{$courseId}m4",
+                courseId,
+                "Bedah Kode 1",
+                3
+            )
+        )
+        modules.add(
+            ModuleResponse(
+                "{$courseId}m5",
+                courseId,
+                "Modul 2 : Teori 2",
+                4
+            )
+        )
+        modules.add(
+            ModuleResponse(
+                "{$courseId}m6",
+                courseId,
+                "Latihan 2",
+                5
+            )
+        )
+        modules.add(
+            ModuleResponse(
+                "{$courseId}m7",
+                courseId,
+                "Bedah Kode 2",
+                6
+            )
+        )
+        return modules
+    }
+
+    fun generateRemoteDummyContent(moduleId: String): ContentResponse {
+        return ContentResponse(moduleId, "This is a dummy content")
     }
 }
