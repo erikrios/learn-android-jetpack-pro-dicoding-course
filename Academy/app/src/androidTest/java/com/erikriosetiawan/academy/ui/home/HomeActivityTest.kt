@@ -21,6 +21,7 @@ class HomeActivityTest {
 
     @Test
     fun loadCourses() {
+        delayTwoSecond()
         onView(withId(R.id.rv_academy)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_academy)).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
@@ -31,12 +32,14 @@ class HomeActivityTest {
 
     @Test
     fun loadDetailCourse() {
+        delayTwoSecond()
         onView(withId(R.id.rv_academy)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                 0,
                 click()
             )
         )
+        delayTwoSecond()
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(withText(dummyCourse[0].title)))
         onView(withId(R.id.text_date)).check(matches(isDisplayed()))
@@ -45,42 +48,58 @@ class HomeActivityTest {
 
     @Test
     fun loadModule() {
+        delayTwoSecond()
         onView(withId(R.id.rv_academy)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                 0,
                 click()
             )
         )
+        delayTwoSecond()
         onView(withId(R.id.btn_start)).perform(click())
+        delayTwoSecond()
         onView(withId(R.id.rv_module)).check(matches(isDisplayed()))
     }
 
     @Test
     fun loadDetailModule() {
+        delayTwoSecond()
         onView(withId(R.id.rv_academy)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                 0,
                 click()
             )
         )
+        delayTwoSecond()
         onView(withId(R.id.btn_start)).perform(click())
+        delayTwoSecond()
         onView(withId(R.id.rv_module)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                 0,
                 click()
             )
         )
+        delayTwoSecond()
         onView(withId(R.id.web_view)).check(matches(isDisplayed()))
     }
 
     @Test
     fun loadBookmarks() {
         onView(withText("Bookmark")).perform(click())
+        delayTwoSecond()
         onView(withId(R.id.rv_bookmark)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_bookmark)).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
                 dummyCourse.size
             )
         )
+    }
+
+    private fun delayTwoSecond() {
+        try {
+            Thread.sleep(2000)
+        } catch (e: InterruptedException) {
+            e.printStackTrace()
+        }
     }
 }
