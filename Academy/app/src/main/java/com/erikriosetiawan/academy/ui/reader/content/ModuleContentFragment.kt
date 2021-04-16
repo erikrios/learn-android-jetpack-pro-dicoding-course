@@ -38,10 +38,9 @@ class ModuleContentFragment : Fragment() {
                 factory
             )[CourseReaderViewModel::class.java]
 
-
             fragmentModuleContentBinding.progressBar.visibility = View.VISIBLE
             viewModel.getSelectedModule().observe(viewLifecycleOwner, { module ->
-                fragmentModuleContentBinding.progressBar.visibility - View.GONE
+                fragmentModuleContentBinding.progressBar.visibility = View.GONE
                 module?.let { populateWebView(module) }
             })
         }
