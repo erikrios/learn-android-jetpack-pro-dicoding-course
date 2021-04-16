@@ -14,7 +14,7 @@ import com.erikriosetiawan.academy.viewmodel.ViewModelFactory
 class ModuleContentFragment : Fragment() {
 
     companion object {
-        val TAG = ModuleContentFragment::class.java.simpleName
+        val TAG: String = ModuleContentFragment::class.java.simpleName
         fun newInstance() = ModuleContentFragment()
     }
 
@@ -37,8 +37,13 @@ class ModuleContentFragment : Fragment() {
                 requireActivity(),
                 factory
             )[CourseReaderViewModel::class.java]
-            val module = viewModel.getSelectedModule()
-            populateWebView(module)
+
+
+            fragmentModuleContentBinding.progressBar.visibility = View.VISIBLE
+            viewModel.getSelectedModule().observe(viewLifecycleOwner, { module ->
+                fragmentModuleContentBinding.progressBar.visibility - View.GONE
+                module?.let { populateWebView(module) }
+            })
         }
     }
 
