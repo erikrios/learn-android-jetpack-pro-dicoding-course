@@ -38,6 +38,6 @@ class MainActivityInstrumentedTest {
     fun checkText() {
         onView(withId(R.id.text_view)).check(matches(withText(instrumentalContext.getString(R.string.prepare))))
         onView(withText(instrumentalContext.getString(R.string.start))).perform(click())
-        onView(withId(R.id.text_view)).check(matches(withText(instrumentalContext.getString(R.string.delay1))))
+        onView(withId(R.id.text_view)).check(matches(withText(instrumentalContext.getString(R.string.delay2))))
     }
 }
