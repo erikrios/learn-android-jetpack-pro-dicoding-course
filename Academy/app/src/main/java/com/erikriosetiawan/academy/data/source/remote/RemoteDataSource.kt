@@ -22,7 +22,7 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
         }
     }
 
-    fun getAllCourses(callback: LoadCourseCallback) {
+    fun getAllCourses(callback: LoadCoursesCallback) {
         handler.postDelayed(
             { callback.onAllCoursesReceived(jsonHelper.loadCourses()) },
             SERVICE_LATENCY_IN_MILLIS
@@ -43,7 +43,7 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
         )
     }
 
-    interface LoadCourseCallback {
+    interface LoadCoursesCallback {
         fun onAllCoursesReceived(courseResponses: List<CourseResponse>)
     }
 
