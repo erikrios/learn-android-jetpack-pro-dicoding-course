@@ -34,10 +34,15 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
                 this,
                 factory
             )[BookmarkViewModel::class.java]
-            val courses = viewModel.getBookmarks()
 
             val adapter = BookmarkAdapter(this)
-            adapter.setCourses(courses)
+
+            fragmentBookmarkBinding.progressBar.visibility = View.VISIBLE
+            viewModel.getBookmarks().observe(viewLifecycleOwner, { courses ->
+                fragmentBookmarkBinding.progressBar.visibility = View.GONE
+                adapter.setCourses(courses)
+                adapter.notifyDataSetChanged()
+            })
 
             with(fragmentBookmarkBinding.rvBookmark) {
                 layoutManager = LinearLayoutManager(context)
