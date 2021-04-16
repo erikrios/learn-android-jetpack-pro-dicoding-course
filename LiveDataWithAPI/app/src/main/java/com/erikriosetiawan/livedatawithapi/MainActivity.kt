@@ -1,7 +1,9 @@
 package com.erikriosetiawan.livedatawithapi
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -41,5 +43,11 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.isLoading.observe(this, {
             activityMainBinding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
         })
+
+        activityMainBinding.btnSend.setOnClickListener { view ->
+            mainViewModel.postReview(activityMainBinding.etReview.text.toString())
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 }
