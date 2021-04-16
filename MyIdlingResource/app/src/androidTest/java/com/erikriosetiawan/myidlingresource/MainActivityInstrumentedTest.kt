@@ -38,13 +38,6 @@ class MainActivityInstrumentedTest {
     fun checkText() {
         onView(withId(R.id.text_view)).check(matches(withText(instrumentalContext.getString(R.string.prepare))))
         onView(withText(instrumentalContext.getString(R.string.start))).perform(click())
-
-        try {
-            Thread.sleep(2000)
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
-        }
-
         onView(withId(R.id.text_view)).check(matches(withText(instrumentalContext.getString(R.string.delay1))))
     }
 }
