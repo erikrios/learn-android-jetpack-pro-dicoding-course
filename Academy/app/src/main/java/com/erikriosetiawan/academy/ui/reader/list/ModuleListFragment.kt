@@ -19,7 +19,7 @@ import com.erikriosetiawan.academy.viewmodel.ViewModelFactory
 class ModuleListFragment : Fragment(), MyAdapterClickListener {
 
     companion object {
-        val TAG = ModuleListFragment::class.java.simpleName
+        val TAG: String = ModuleListFragment::class.java.simpleName
 
         fun newInstance() = ModuleListFragment()
     }
@@ -46,7 +46,12 @@ class ModuleListFragment : Fragment(), MyAdapterClickListener {
             factory
         )[CourseReaderViewModel::class.java]
         adapter = ModuleListAdapter(this)
-        populateRecyclerView(viewModel.getModules())
+
+        fragmentModuleListBinding.progressBar.visibility = View.VISIBLE
+        viewModel.getModules().observe(viewLifecycleOwner, { modules ->
+            fragmentModuleListBinding.progressBar.visibility = View.GONE
+            populateRecyclerView(modules)
+        })
     }
 
     override fun onAttach(context: Context) {
