@@ -2,6 +2,7 @@ package com.erikriosetiawan.mynoteapps.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +12,7 @@ import com.erikriosetiawan.mynoteapps.database.Note
 import com.erikriosetiawan.mynoteapps.databinding.ActivityMainBinding
 import com.erikriosetiawan.mynoteapps.helper.ViewModelFactory
 import com.erikriosetiawan.mynoteapps.ui.insert.NoteAddUpdateActivity
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +46,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        data?.let {
+            if (requestCode == NoteAddUpdateActivity.REQUEST_ADD) {
+                if (resultCode == NoteAddUpdateActivity.RESULT_ADD) {
+                    showSnackbarMessage(getString(R.string.added))
+                }
+            } else if (requestCode == NoteAddUpdateActivity.REQUEST_UPDATE) {
+                if (resultCode == NoteAddUpdateActivity.RESULT_ADD) {
+                    showSnackbarMessage(getString(R.string.change))
+                } else if (resultCode == NoteAddUpdateActivity.RESULT_DELETE) {
+                    showSnackbarMessage(getString(R.string.delete))
+                }
+            }
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _activityMainBinding = null
@@ -56,5 +75,9 @@ class MainActivity : AppCompatActivity() {
 
     private val noteObserver = Observer<List<Note>> { noteList ->
         noteList?.let { adapter.setListNotes(noteList) }
+    }
+
+    private fun showSnackbarMessage(message: String) {
+        Snackbar.make(binding?.root as View, message, Snackbar.LENGTH_SHORT).show()
     }
 }
