@@ -1,7 +1,7 @@
 package com.erikriosetiawan.academy.utils
 
-import com.erikriosetiawan.academy.data.entity.CourseEntity
-import com.erikriosetiawan.academy.data.entity.ModuleEntity
+import com.erikriosetiawan.academy.data.source.local.entity.CourseEntity
+import com.erikriosetiawan.academy.data.source.local.entity.ModuleEntity
 import com.erikriosetiawan.academy.data.source.remote.response.ContentResponse
 import com.erikriosetiawan.academy.data.source.remote.response.CourseResponse
 import com.erikriosetiawan.academy.data.source.remote.response.ModuleResponse

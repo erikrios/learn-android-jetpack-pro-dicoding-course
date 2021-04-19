@@ -2,9 +2,9 @@ package com.erikriosetiawan.academy.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.erikriosetiawan.academy.data.entity.ContentEntity
-import com.erikriosetiawan.academy.data.entity.CourseEntity
-import com.erikriosetiawan.academy.data.entity.ModuleEntity
+import com.erikriosetiawan.academy.data.source.local.entity.ContentEntity
+import com.erikriosetiawan.academy.data.source.local.entity.CourseEntity
+import com.erikriosetiawan.academy.data.source.local.entity.ModuleEntity
 import com.erikriosetiawan.academy.data.source.AcademyDataSource
 import com.erikriosetiawan.academy.data.source.remote.RemoteDataSource
 import com.erikriosetiawan.academy.data.source.remote.response.ContentResponse

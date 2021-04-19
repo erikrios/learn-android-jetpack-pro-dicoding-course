@@ -3,8 +3,8 @@ package com.erikriosetiawan.academy.ui.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.erikriosetiawan.academy.data.AcademyRepository
-import com.erikriosetiawan.academy.data.entity.CourseEntity
-import com.erikriosetiawan.academy.data.entity.ModuleEntity
+import com.erikriosetiawan.academy.data.source.local.entity.CourseEntity
+import com.erikriosetiawan.academy.data.source.local.entity.ModuleEntity
 
 class DetailCourseViewModel(private val academyRepository: AcademyRepository) : ViewModel() {
 

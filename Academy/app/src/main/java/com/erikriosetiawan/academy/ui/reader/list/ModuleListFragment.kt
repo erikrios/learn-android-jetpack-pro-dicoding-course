@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.erikriosetiawan.academy.data.entity.ModuleEntity
+import com.erikriosetiawan.academy.data.source.local.entity.ModuleEntity
 import com.erikriosetiawan.academy.databinding.FragmentModuleListBinding
 import com.erikriosetiawan.academy.ui.reader.CourseReaderActivity
 import com.erikriosetiawan.academy.ui.reader.CourseReaderCallback

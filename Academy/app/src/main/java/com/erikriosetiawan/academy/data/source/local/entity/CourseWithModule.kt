@@ -1,4 +1,4 @@
-package com.erikriosetiawan.academy.data.entity
+package com.erikriosetiawan.academy.data.source.local.entity
 
 import androidx.room.Embedded
 import androidx.room.Relation
