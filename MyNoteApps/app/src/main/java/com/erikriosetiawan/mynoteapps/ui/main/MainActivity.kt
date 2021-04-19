@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         binding?.rvNotes?.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             setHasFixedSize(true)
-            adapter = adapter
+            adapter = this@MainActivity.adapter
         }
 
         binding?.fabAdd?.setOnClickListener { view ->
