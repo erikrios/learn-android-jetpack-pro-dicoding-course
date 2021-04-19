@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.erikriosetiawan.academy.R
-import com.erikriosetiawan.academy.data.CourseEntity
+import com.erikriosetiawan.academy.data.entity.CourseEntity
 import com.erikriosetiawan.academy.databinding.ItemsAcademyBinding
 import com.erikriosetiawan.academy.ui.detail.DetailCourseActivity
 

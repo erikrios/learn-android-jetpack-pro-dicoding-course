@@ -3,7 +3,7 @@ package com.erikriosetiawan.academy.ui.reader
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.erikriosetiawan.academy.data.AcademyRepository
-import com.erikriosetiawan.academy.data.ModuleEntity
+import com.erikriosetiawan.academy.data.entity.ModuleEntity
 
 class CourseReaderViewModel(private val academyRepository: AcademyRepository) : ViewModel() {
 

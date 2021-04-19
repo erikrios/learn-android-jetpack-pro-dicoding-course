@@ -4,8 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.erikriosetiawan.academy.data.AcademyRepository
-import com.erikriosetiawan.academy.data.ContentEntity
-import com.erikriosetiawan.academy.data.ModuleEntity
+import com.erikriosetiawan.academy.data.entity.ContentEntity
+import com.erikriosetiawan.academy.data.entity.ModuleEntity
 import com.erikriosetiawan.academy.utils.DataDummy
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull

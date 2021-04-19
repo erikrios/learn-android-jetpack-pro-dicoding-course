@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.erikriosetiawan.academy.R
-import com.erikriosetiawan.academy.data.CourseEntity
+import com.erikriosetiawan.academy.data.entity.CourseEntity
 import com.erikriosetiawan.academy.databinding.ActivityDetailCourseBinding
 import com.erikriosetiawan.academy.databinding.ContentDetailCourseBinding
 import com.erikriosetiawan.academy.ui.reader.CourseReaderActivity
