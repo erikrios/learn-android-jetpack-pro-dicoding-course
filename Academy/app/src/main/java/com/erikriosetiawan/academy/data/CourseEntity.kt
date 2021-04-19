@@ -1,5 +1,8 @@
 package com.erikriosetiawan.academy.data
 
+import androidx.room.Entity
+
+@Entity(tableName = "courseentities")
 data class CourseEntity(
     var courseId: String,
     var title: String,
