@@ -14,7 +14,7 @@ data class Note(
     var id: Int = 0,
 
     @ColumnInfo(name = "title")
-    var tile: String? = null,
+    var title: String? = null,
 
     @ColumnInfo(name = "description")
     var description: String? = null,
