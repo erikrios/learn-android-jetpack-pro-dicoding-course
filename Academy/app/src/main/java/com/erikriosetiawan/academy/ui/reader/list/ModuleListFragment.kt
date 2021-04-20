@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -15,6 +16,7 @@ import com.erikriosetiawan.academy.ui.reader.CourseReaderActivity
 import com.erikriosetiawan.academy.ui.reader.CourseReaderCallback
 import com.erikriosetiawan.academy.ui.reader.CourseReaderViewModel
 import com.erikriosetiawan.academy.viewmodel.ViewModelFactory
+import com.erikriosetiawan.academy.vo.Status
 
 class ModuleListFragment : Fragment(), MyAdapterClickListener {
 
@@ -47,10 +49,21 @@ class ModuleListFragment : Fragment(), MyAdapterClickListener {
         )[CourseReaderViewModel::class.java]
         adapter = ModuleListAdapter(this)
 
-        fragmentModuleListBinding.progressBar.visibility = View.VISIBLE
-        viewModel.getModules().observe(viewLifecycleOwner, { modules ->
-            fragmentModuleListBinding.progressBar.visibility = View.GONE
-            populateRecyclerView(modules)
+        viewModel.modules.observe(viewLifecycleOwner, { moduleEntities ->
+            moduleEntities?.let {
+                when (moduleEntities.status) {
+                    Status.LOADING -> fragmentModuleListBinding.progressBar.visibility =
+                        View.VISIBLE
+                    Status.SUCCESS -> {
+                        fragmentModuleListBinding.progressBar.visibility = View.GONE
+                        populateRecyclerView(moduleEntities.data as List<ModuleEntity>)
+                    }
+                    Status.ERROR -> {
+                        fragmentModuleListBinding.progressBar.visibility = View.GONE
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         })
     }
 

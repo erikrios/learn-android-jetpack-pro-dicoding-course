@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.erikriosetiawan.academy.databinding.FragmentAcademyBinding
 import com.erikriosetiawan.academy.viewmodel.ViewModelFactory
+import com.erikriosetiawan.academy.vo.Status
 
 class AcademyFragment : Fragment() {
 
@@ -35,9 +37,22 @@ class AcademyFragment : Fragment() {
 
             fragmentAcademyBinding.progressBar.visibility = View.VISIBLE
             viewModel.getCourses().observe(viewLifecycleOwner, { courses ->
-                fragmentAcademyBinding.progressBar.visibility = View.GONE
-                academyAdapter.setCourses(courses)
-                academyAdapter.notifyDataSetChanged()
+                courses.let {
+                    when (courses.status) {
+                        Status.LOADING -> fragmentAcademyBinding.progressBar.visibility =
+                            View.VISIBLE
+                        Status.SUCCESS -> {
+                            fragmentAcademyBinding.progressBar.visibility = View.GONE
+                            academyAdapter.setCourses(courses.data)
+                            academyAdapter.notifyDataSetChanged()
+                        }
+                        Status.ERROR -> {
+                            fragmentAcademyBinding.progressBar.visibility = View.GONE
+                            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+                }
             })
 
             with(fragmentAcademyBinding.rvAcademy) {
