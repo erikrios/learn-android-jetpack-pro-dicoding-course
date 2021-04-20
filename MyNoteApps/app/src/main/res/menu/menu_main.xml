@@ -7,11 +7,11 @@
             android:title="@string/menu_newest" />
         <item
             android:id="@+id/action_oldest"
-            android:checked="true"
+            android:checked="false"
             android:title="@string/menu_oldest" />
         <item
             android:id="@+id/action_random"
-            android:checked="true"
+            android:checked="false"
             android:title="@string/menu_random" />
     </group>
 </menu>
