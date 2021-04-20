@@ -3,6 +3,8 @@ package com.erikriosetiawan.academy.ui.academy
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -11,14 +13,16 @@ import com.erikriosetiawan.academy.data.source.local.entity.CourseEntity
 import com.erikriosetiawan.academy.databinding.ItemsAcademyBinding
 import com.erikriosetiawan.academy.ui.detail.DetailCourseActivity
 
-class AcademyAdapter : RecyclerView.Adapter<AcademyAdapter.CourseViewHolder>() {
+class AcademyAdapter :
+    PagedListAdapter<CourseEntity, AcademyAdapter.CourseViewHolder>(DIFF_CALLBACK) {
 
-    private var listCourses = ArrayList<CourseEntity>()
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CourseEntity>() {
+            override fun areItemsTheSame(oldItem: CourseEntity, newItem: CourseEntity): Boolean =
+                oldItem.courseId == newItem.courseId
 
-    fun setCourses(courses: List<CourseEntity>?) {
-        courses?.let {
-            this.listCourses.clear()
-            this.listCourses.addAll(courses)
+            override fun areContentsTheSame(oldItem: CourseEntity, newItem: CourseEntity): Boolean =
+                oldItem == newItem
         }
     }
 
@@ -32,11 +36,11 @@ class AcademyAdapter : RecyclerView.Adapter<AcademyAdapter.CourseViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: AcademyAdapter.CourseViewHolder, position: Int) {
-        val course = listCourses[position]
-        holder.bind(course)
+        val course = getItem(position)
+        course?.let {
+            holder.bind(it)
+        }
     }
-
-    override fun getItemCount(): Int = listCourses.size
 
     inner class CourseViewHolder(private val binding: ItemsAcademyBinding) :
         RecyclerView.ViewHolder(binding.root) {
