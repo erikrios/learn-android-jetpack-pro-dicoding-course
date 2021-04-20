@@ -16,4 +16,7 @@ interface NoteDao {
 
     @Query("SELECT * FROM note ORDER BY id ASC")
     fun getAllNotes(): DataSource.Factory<Int, Note>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAll(list: List<Note>)
 }
