@@ -9,4 +9,9 @@ import com.erikriosetiawan.academy.data.source.local.entity.CourseEntity
 class BookmarkViewModel(private val academyRepository: AcademyRepository) : ViewModel() {
 
     fun getBookmarks(): LiveData<PagedList<CourseEntity>> = academyRepository.getBookmarkedCourses()
+
+    fun setBookmark(courseEntity: CourseEntity) {
+        val newState = !courseEntity.bookmarked
+        academyRepository.setCourseBookmark(courseEntity, newState)
+    }
 }
