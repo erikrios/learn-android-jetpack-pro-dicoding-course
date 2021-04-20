@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         val sort =
             when (item.itemId) {
                 R.id.action_newest -> SortUtils.NEWEST
-                R.id.action_oldest -> SortUtils.NEWEST
+                R.id.action_oldest -> SortUtils.OLDEST
                 R.id.action_random -> SortUtils.RANDOM
                 else -> ""
             }
