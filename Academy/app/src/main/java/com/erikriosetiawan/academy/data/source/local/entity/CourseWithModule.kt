@@ -7,6 +7,6 @@ data class CourseWithModule(
     @Embedded
     var mCourse: CourseEntity,
 
-    @Relation(parentColumn = "courseId", entityColumn = "columnId")
+    @Relation(parentColumn = "courseId", entityColumn = "courseId")
     var mModules: List<ModuleEntity>
 )
